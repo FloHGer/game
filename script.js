@@ -1,5 +1,5 @@
 var currScene, option;
-var bagStatus = false, bagItem = 0;
+var currItem, bagStatus = false, bagItem = 0;
 var bagContent = ["stone"];
 var dungeonOptions = ["a pile of ruins.", "a dirty sheet.", "the door.", "Azruk."];
 var dungeon2Options = ["a skeleton.", "the tunnel.", "a spoon.", "a key."];
@@ -16,7 +16,7 @@ function checkKey(k) {
         if(bagStatus == false){
             window["scene"][currScene](10);
         }else if(bagStatus == true){
-            //interaction with item goes here
+            bag(10);
         }
         break;
     case 37 :
@@ -56,7 +56,21 @@ function checkKey(k) {
 
 // bag
 function bag(c){
-   
+
+    if(c == 10){
+    // interact
+        currItem = bagContent[bagItem];
+        if(currItem == ""){
+            document.getElementById("handLabel").innerHTML = "";
+            document.getElementById("hand").innerHTML = "";
+            return;
+        }else{
+            document.getElementById("handLabel").innerHTML = "Hand: ";
+            document.getElementById("hand").innerHTML = "[ " + currItem + " ]";
+            return;
+        }
+    }
+
     bagItem += c;
 
     // cycle
@@ -107,10 +121,9 @@ var scene = {
                         break;
                     case 2:
                         if(dungeonOptions[2] == "the door."){
-                            if(bagContent.includes("key")){
+                            if(currItem == "key"){
                                 dungeonOptions[2] = "the opened Door.";
-                                bagContent.slice(bagContent.indexOf("key"), 1);
-                                // remove key from bag
+//incorrect                     bagContent.slice(bagContent.indexOf("key"), 1);
                                 document.getElementById("view").innerHTML = dungeonOptions[2];
                                 document.getElementById("info").innerHTML = "You opened the Door";
                                 

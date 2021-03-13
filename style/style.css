@@ -36,10 +36,9 @@ a{
     font-size: 50px;
     text-align: center;
     width: 300px;
-    margin: auto; 
-    margin: 45vh auto 0;
+    margin: 50px auto; 
     border: solid 5px black;
-    padding: 50px;
+    padding: 10px;
 }
 
 .menuLink:hover{

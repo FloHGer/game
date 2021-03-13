@@ -1,27 +1,23 @@
 # The Game
 
-## super nice rpg ;)
-
 ---
 
 ### Instructions
 
 ###### Press "LEFT ARROW":
 - turn left
-- previous item
+- previous item (bag)
 
 ###### Press "RIGHT ARROW":
 - turn right
-- next item
+- next item (bag)
 
 ###### Press "UP ARROW":
-- change scene
 - interact
+- select item (bag)
 
 ###### Press "DOWN ARROW":
 - open bag
 - close bag
 
 ---
-
-*copyright by JH & FH 2021*
