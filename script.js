@@ -120,8 +120,8 @@ var scene = {
                                 return;
                             }
                         }else if(dungeonOptions[2] == "the opened Door."){
-                            document.getElementById("view").innerHTML = "Congratulations!";
-                            document.getElementById("info").innerHTML = "You passed the test ;)";
+                            document.getElementById("view").innerHTML = "freedom!";
+                            document.getElementById("info").innerHTML = "Congratulations, you passed the test ;)";
                             return;
                         }
                         break;
