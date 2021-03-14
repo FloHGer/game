@@ -2,22 +2,33 @@
 
 ---
 
-### Instructions
+## Instructions
 
 ###### Press "LEFT ARROW":
 - turn left
-- previous item (bag)
 
 ###### Press "RIGHT ARROW":
 - turn right
-- next item (bag)
 
 ###### Press "UP ARROW":
 - interact
-- select item (bag)
 
 ###### Press "DOWN ARROW":
 - open bag
+
+#### with bag open:
+
+###### Press "LEFT ARROW":
+- previous item
+
+###### Press "RIGHT ARROW":
+- next item
+
+###### Press "UP ARROW":
+- select / deselect item
+
+###### Press "DOWN ARROW":
 - close bag
+
 
 ---
