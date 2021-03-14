@@ -142,7 +142,7 @@ var scene = {
                                 bagContent.splice(bagContent.indexOf("key"), 1);
                                 dungeonOptions[2] = "the opened Door."; 
                                 document.getElementById("view").innerHTML = dungeonOptions[2];
-                                document.getElementById("info").innerHTML = "You opened the Door";
+                                document.getElementById("info").innerHTML = "You opened the Door.";
                                 document.getElementById("handLabel").innerHTML = "";
                                 document.getElementById("hand").innerHTML = "";
                                 return;

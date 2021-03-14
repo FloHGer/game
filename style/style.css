@@ -37,7 +37,7 @@ a{
     display: block;
     font-size: 50px;
     text-align: center;
-    width: 300px;
+    width: 350px;
     margin: 50px auto; 
     border: solid 5px black;
     padding: 10px;
@@ -45,4 +45,12 @@ a{
 
 .menuLink:hover{
     background-color: green;
+}
+#instructions{
+    text-align: center;
+    font-size: 200%;
+    color: white;
+}
+.material-icons.md-60{
+    font-size: 100px;
 }
