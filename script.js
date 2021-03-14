@@ -11,7 +11,8 @@ function cookie(){
         cookie();
         return;
     }else{
-        scene.dungeon(0);
+        document.getElementById("output").innerHTML = document.cookie;
+        view.dungeon(0);
         return;
     }
 }
@@ -28,7 +29,7 @@ function checkKey(k){
     case 38:
     // up arrow - interact
         if(bagStatus == "closed"){
-            window["scene"][currScene](10);
+            window["view"][currScene](10);
         }else if(bagStatus == "open"){
             bagInteraction();
         }
@@ -37,7 +38,7 @@ function checkKey(k){
     // left arrow
         if(bagStatus == "closed"){
             document.getElementById("info").innerHTML = "";
-            window["scene"][currScene](-1);
+            window["view"][currScene](-1);
         }else if(bagStatus == "open"){
             bag(-1);
         }
@@ -46,7 +47,7 @@ function checkKey(k){
     // right arrow
         if(bagStatus == "closed"){
             document.getElementById("info").innerHTML = "";
-            window["scene"][currScene](1);
+            window["view"][currScene](1);
         }else if(bagStatus == "open"){
             bag(1);
         }
@@ -113,8 +114,8 @@ function bagInteraction(){
 }
 
 
-// scenes
-var scene = {
+// views
+var view = {
     
     dungeon : function(d){
         
@@ -123,6 +124,7 @@ var scene = {
             // init
                 option = 0;
                 currScene = "dungeon";
+                document.cookie = "currScene=dungeon";
                 document.getElementById("location").innerHTML = "Dungeon";
                 break;
             case 10:
@@ -137,6 +139,7 @@ var scene = {
                         if(dungeonOptions[1] == "a dirty sheet."){
                         // remove sheet
                             dungeonOptions[1] = "a tunnel.";
+                            document.cookie = "dungeonOptions[1]=a tunnel.";
                             document.getElementById("view").innerHTML = dungeonOptions[1];
                             document.getElementById("info").innerHTML = "You removed the sheet and found a tunnel.";
                             return;
@@ -144,6 +147,7 @@ var scene = {
                         // move to dungeon2
                             option = 0;
                             currScene = "dungeon2";
+                            document.cookie = "currScene=dungeon2";
                             document.getElementById("location").innerHTML = "Dungeon 2";
                             document.getElementById("info").innerHTML = "You went through the tunnel to another Dungeon.";
                             document.getElementById("view").innerHTML = dungeon2Options[option];
@@ -155,7 +159,9 @@ var scene = {
                         if(dungeonOptions[2] == "the door."){
                             if(currItem == "key"){
                                 bagContent.splice(bagContent.indexOf("key"), 1);
-                                dungeonOptions[2] = "the opened Door."; 
+                                dungeonOptions[2] = "the opened Door.";
+                                document.cookie = "dungeonOptions[2]=the opened door.";
+                                document.cookie = "bagContent-=key"; //fix this
                                 document.getElementById("view").innerHTML = dungeonOptions[2];
                                 document.getElementById("info").innerHTML = "You opened the Door.";
                                 document.getElementById("handLabel").innerHTML = "";
@@ -180,7 +186,6 @@ var scene = {
             default:
             // change option
                 option += d;
-                document.cookie = "";
                 break;
         }
         
@@ -202,6 +207,7 @@ var scene = {
             // init
                 option = 0;
                 currScene = "dungeon2";
+                document.cookie = "currScene=dungeon2";
                 document.getElementById("location").innerHTML = "Dungeon 2";
                 break;
             case 10:
@@ -214,6 +220,7 @@ var scene = {
                     // move back to dungeon1
                         option = 0;
                         currScene = "dungeon";
+                        document.cookie = "currScene=dungeon";
                         document.getElementById("location").innerHTML = "Dungeon";
                         document.getElementById("info").innerHTML = "You went back through the tunnel.";
                         document.getElementById("view").innerHTML = dungeonOptions[option];
@@ -226,6 +233,8 @@ var scene = {
                         if(dungeon2Options.includes("a key.")){
                             dungeon2Options[3] = "an empty place."
                             bagContent.push("key");
+                            document.cookie = "dungeon2Options[3]=an empty place";
+                            document.cookie = "bagContent+=key"; //fix this
                             document.getElementById("view").innerHTML = dungeon2Options[3];
                             document.getElementById("info").innerHTML = "You put the key into your bag.";
                             return;
