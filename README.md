@@ -16,7 +16,7 @@
 ###### Press "DOWN ARROW":
 - open bag
 
-- previous item (bag)---
+---
 
 #### with bag open:
 
