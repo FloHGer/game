@@ -3,7 +3,22 @@ var currItem, bagStatus = "closed", bagItem = 0;
 var bagContent = ["stone"];
 var dungeonOptions = ["a pile of ruins.", "a dirty sheet.", "the door.", "Azruk."];
 var dungeon2Options = ["a skeleton.", "the tunnel.", "a spoon.", "a key."];
-document.cookie = "";
+
+function cookie(){
+    if(document.cookie == "user=" || document.cookie == "user=null"){
+        var user = prompt("Enter your name: ");
+        document.cookie = "user=" + user;
+        cookie();
+        return;
+    }else{
+        scene.dungeon(0);
+        return;
+    }
+}
+
+function cookieReset(){
+    document.cookie = "user=";
+}
 
 // keyboard input
 document.onkeydown = checkKey;
