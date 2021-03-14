@@ -1,5 +1,5 @@
-var currScene, option;
-var currItem, bagStatus = false, bagItem = 0;
+var currScene, option = 0;
+var currItem, bagStatus = "closed", bagItem = 0;
 var bagContent = ["stone"];
 var dungeonOptions = ["a pile of ruins.", "a dirty sheet.", "the door.", "Azruk."];
 var dungeon2Options = ["a skeleton.", "the tunnel.", "a spoon.", "a key."];
@@ -7,47 +7,38 @@ document.cookie = "";
 
 // keyboard input
 document.onkeydown = checkKey;
-function checkKey(k) {
-  
-    k = k || window.event;
+function checkKey(k){
+
     switch(k.keyCode){
     case 38:
     // up arrow - interact
-        if(bagStatus == false){
+        if(bagStatus == "closed"){
             window["scene"][currScene](10);
-        }else if(bagStatus == true){
-            bag(10);
+        }else if(bagStatus == "open"){
+            bagInteraction();
         }
         break;
     case 37 :
     // left arrow
-        if(bagStatus == false){
+        if(bagStatus == "closed"){
             document.getElementById("info").innerHTML = "";
             window["scene"][currScene](-1);
-        }else if(bagStatus == true){
+        }else if(bagStatus == "open"){
             bag(-1);
         }
         break;
     case 39:
     // right arrow
-        if(bagStatus == false){
+        if(bagStatus == "closed"){
             document.getElementById("info").innerHTML = "";
             window["scene"][currScene](1);
-        }else if(bagStatus == true){
+        }else if(bagStatus == "open"){
             bag(1);
         }
         break;
     case 40:
     // down arrow - bag open/close
-        if(bagStatus == false || bagStatus == undefined){
-            bagStatus = true;
-            document.getElementById("bagLabel").innerHTML = "Bag: ";
-            document.getElementById("bag").innerHTML = bagContent[0];
-        }else if(bagStatus == true){
-            bagStatus = false;
-            document.getElementById("bagLabel").innerHTML = "";
-            document.getElementById("bag").innerHTML = "";
-        }
+        bagOpen();
         break;
     default:
     }
@@ -55,33 +46,55 @@ function checkKey(k) {
 
 
 // bag
-function bag(c){
-
-    if(c == 10){
-    // interact
-        currItem = bagContent[bagItem];
-        if(currItem == ""){
-            document.getElementById("handLabel").innerHTML = "";
-            document.getElementById("hand").innerHTML = "";
-            return;
+function bagOpen(){
+    if(bagStatus == "closed"){
+    // open bag
+        document.getElementById("bagLabel").innerHTML = "Bag: ";
+        if(bagContent.length === 0){
+            bagStatus = "empty";
+            document.getElementById("bag").innerHTML = "bag is empty";
         }else{
-            document.getElementById("handLabel").innerHTML = "Hand: ";
-            document.getElementById("hand").innerHTML = "[ " + currItem + " ]";
-            return;
+            bagStatus = "open";
+            bagItem = 0;
+            document.getElementById("bag").innerHTML = bagContent[0];
         }
+    }else{
+    // close bag
+        bagStatus = "closed";
+        document.getElementById("bagLabel").innerHTML = "";
+        document.getElementById("bag").innerHTML = "";
     }
 
-    bagItem += c;
+}
+
+function bag(i){
+
+    // switch bag items
+    bagItem += i;
 
     // cycle
     if(bagItem > (bagContent.length - 1)){
         bagItem -= bagContent.length;
     }else if(bagItem < 0){
-        bagItem = bagContent.length - 1;
+        bagItem = (bagContent.length - 1);
     }
 
-    // print option
+    // print current bag item
     return document.getElementById("bag").innerHTML = bagContent[bagItem];
+}
+function bagInteraction(){
+
+    if(currItem == bagContent[bagItem]){
+        currItem = "";
+        document.getElementById("handLabel").innerHTML = "";
+        document.getElementById("hand").innerHTML = "";
+        return;
+    }else{
+        currItem = bagContent[bagItem];
+        document.getElementById("handLabel").innerHTML = "Hand: ";
+        document.getElementById("hand").innerHTML = "[" + currItem + "]";
+        return;
+    }
 }
 
 
@@ -101,10 +114,13 @@ var scene = {
             // interact
                 switch(option){
                     case 0:
+                    // pile of ruins
                         document.getElementById("info").innerHTML = "Here you fell through the ceiling.";
                         return;
                     case 1:
+                    // dirty sheet / tunnel
                         if(dungeonOptions[1] == "a dirty sheet."){
+                        // remove sheet
                             dungeonOptions[1] = "a tunnel.";
                             document.getElementById("view").innerHTML = dungeonOptions[1];
                             document.getElementById("info").innerHTML = "You removed the sheet and found a tunnel.";
@@ -120,13 +136,15 @@ var scene = {
                         }
                         break;
                     case 2:
+                    // door
                         if(dungeonOptions[2] == "the door."){
                             if(currItem == "key"){
-                                dungeonOptions[2] = "the opened Door.";
-//incorrect                     bagContent.slice(bagContent.indexOf("key"), 1);
+                                bagContent.splice(bagContent.indexOf("key"), 1);
+                                dungeonOptions[2] = "the opened Door."; 
                                 document.getElementById("view").innerHTML = dungeonOptions[2];
                                 document.getElementById("info").innerHTML = "You opened the Door";
-                                
+                                document.getElementById("handLabel").innerHTML = "";
+                                document.getElementById("hand").innerHTML = "";
                                 return;
                             }else{
                                 document.getElementById("info").innerHTML = "The door is locked.";
@@ -139,6 +157,7 @@ var scene = {
                         }
                         break;
                     case 3:
+                    // azruk
                         document.getElementById("info").innerHTML = "Hi, I'm Azruk, the dungeon master!";
                         return;
                 }

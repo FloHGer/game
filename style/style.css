@@ -11,7 +11,9 @@ body{
 .view{
     font-size: 40px;
 }
-
+#info{
+    font-size: 20px;
+}
 #hud{
     color: white;
     font-size: 30px;
@@ -19,7 +21,7 @@ body{
     margin-left: 25%;
 }
 
-#view, #bag{
+#view, #bag, #hand{
     color: lightskyblue;
 }
 
