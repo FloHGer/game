@@ -5,6 +5,8 @@ var dungeonOptions = ["a pile of ruins.", "a dirty sheet.", "the door.", "Azruk.
 var dungeon2Options = ["a skeleton.", "the tunnel.", "a spoon.", "a key."];
 document.cookie = "";
 
+
+
 // keyboard input
 document.onkeydown = checkKey;
 function checkKey(k){
@@ -40,7 +42,21 @@ function checkKey(k){
     // down arrow - bag open/close
         bagOpen();
         break;
+    case 32:
+    // space - menu
+        showHelp();
     default:
+    }
+}
+
+
+// help
+function showHelp(){
+    var x = document.getElementById("instruction");
+    if(window.getComputedStyle(x).display === "none"){
+        document.getElementById("instruction").style.display = "block";
+    }else{
+        document.getElementById("instruction").style.display = "none";
     }
 }
 

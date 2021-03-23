@@ -4,12 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instructions</title>
+    <title>TheGame</title>
     <link rel="stylesheet" href="./main.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
-<body>
-    <div id="instructions">
+<body onload="scene.dungeon(0)"></body>
+    <h1 id="location"></h1>
+    <div id="hud">
+    <!-- direction display -->   
+        <span class="view">You're looking at </span>
+        <span class="view" id="view"></span><br>
+
+    <!-- info msg-->
+        <span id="info"></span><br><br>
+
+    <!-- hand -->
+        <span class="hand" id="handLabel"></span>
+        <span class="hand" id="hand"></span><br>
+
+    <!-- bag -->    
+        <span class="bag" id="bagLabel"></span>
+        <span class="bag" id="bag"></span><br>
+    </div>
+
+    <!-- menu / help -->
+    <p id="help">Press <span class="material-icons">space_bar</span> for Instructions.</p>
+
+    <div id="instruction">
         <h1>INSTRUCTIONS</h1>
         <span class="material-icons">keyboard_arrow_up</span>
         <span class="instTxt">interact</span><br>
@@ -35,9 +56,14 @@
         <span class="instTxt">next item</span><br>
 
         <span class="material-icons">keyboard_arrow_down</span>
-        <span class="instTxt">close bag</span><br>
+        <span class="instTxt">close bag</span><br> 
         <a href="index.html">
             <span class="menuLink">Main Menu</span>
         </a>
     </div>
+
+
+    <!-- scripts -->
+        <script src="/script.js"></script>
+</body>
 </html>

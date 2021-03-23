@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(40 40 40);
+    background-color: #282828;
     font-family: verdana, sans-serif;
 }
 #location{
@@ -11,9 +11,11 @@ body{
 .view{
     font-size: 40px;
 }
+
 #info{
     font-size: 20px;
 }
+
 #hud{
     color: white;
     font-size: 30px;
@@ -24,6 +26,25 @@ body{
 #view, #bag, #hand{
     color: lightskyblue;
 }
+
+#help{
+    color: white;
+}
+
+#instruction{
+    position: fixed;
+    top: 0;
+    left: 50%;
+    height: 100vh;
+    width: 1000px;
+    margin-left:-500px;
+    background-color: #282828;
+    text-align: center;
+    font-size: 200%;
+    color: white;
+    display: none;
+}
+
 
 /* index */
 a{
