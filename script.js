@@ -5,8 +5,6 @@ var dungeonOptions = ["a pile of ruins.", "a dirty sheet.", "the door.", "Azruk.
 var dungeon2Options = ["a skeleton.", "the tunnel.", "a spoon.", "a key."];
 
 
-
-
 // keyboard input
 document.onkeydown = checkKey;
 function checkKey(k){
