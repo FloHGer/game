@@ -49,11 +49,11 @@ function checkKey(k){
 
 // help
 function showHelp(){
-    var x = document.getElementById("instruction");
+    var x = document.getElementById("instructions");
     if(window.getComputedStyle(x).display === "none"){
-        document.getElementById("instruction").style.display = "block";
+        document.getElementById("instructions").style.display = "block";
     }else{
-        document.getElementById("instruction").style.display = "none";
+        document.getElementById("instructions").style.display = "none";
     }
 }
 

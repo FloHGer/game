@@ -101,16 +101,21 @@ h1{
     font-size: 3rem;
 }
 /* isntructions */
-#instruction{
+#instructions{
     position: fixed;
     top: 2%;
     left: 50%;
     transform: translateX(-50%);
     height: 100vh;
+    width: 50%;
     background-color: #282828;
     text-align: center;
     font-size: 200%;
     display: none;
+}
+
+h2{
+    margin-top: 5rem;
 }
 
 /* INDEX */
@@ -135,10 +140,7 @@ h1{
 .menuLink:hover{
     background-color: green;
 }
-#instructions{
-    text-align: center;
-    font-size: 200%;
-}
+
 .material-icons.md-60{
     font-size: 10rem;
 }
