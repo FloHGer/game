@@ -9,61 +9,85 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body onload="view.dungeon(0)"></body>
-    <h1 id="location"></h1>
-    <div id="hud">
-    <!-- direction display -->   
-        <span class="view">You're looking at </span>
-        <span class="view" id="view"></span><br>
-
-    <!-- info msg-->
-        <span id="info"></span><br><br>
-
-    <!-- hand -->
-        <span class="hand" id="handLabel"></span>
-        <span class="hand" id="hand"></span><br>
-
-    <!-- bag -->    
-        <span class="bag" id="bagLabel"></span>
-        <span class="bag" id="bag"></span><br>
+    <div class="grid-container">
+        <h1>The Game</h1>
+        <div class="hud">
+<!-- location label -->
+            <div class="location-label">
+                <p>You're in </p>
+                <p>You're looking at </p>
+            </div>
+<!-- location value -->
+            <div class="location-value">
+                <p id="location"></p>
+                <p id="view"></p>
+            </div>
+<!-- info msg-->
+            <p id="info"></p>
+<!-- interaction label -->
+            <div class="interaction-label">
+                <p id="handLabel"></p>
+                <p id="bagLabel"></p>
+            </div>
+<!-- interaction value -->
+            <div class="interaction-value">
+                <p id="hand"></p>
+                <p id="bag"></p>
+            </div>
+        </div>
+<!-- menu / help -->
+        <p id="help">Press <span class="material-icons">space_bar</span> for Instructions.</p>
     </div>
-
-    <!-- menu / help -->
-    <p id="help">Press <span class="material-icons">space_bar</span> for Instructions.</p>
-
+<!-- popup -->
     <div id="instruction">
         <h1>INSTRUCTIONS</h1>
-        <span class="material-icons">keyboard_arrow_up</span>
-        <span class="instTxt">interact</span><br>
+        <p class="instTxt">
+            <span class="material-icons">keyboard_arrow_up</span>
+            interact
+        </p>
 
-        <span class="material-icons">keyboard_arrow_left</span>
-        <span class="instTxt">turn left</span><br>
+        <p class="instTxt">
+            <span class="material-icons">keyboard_arrow_left</span>
+            turn left
+        </p>
 
-        <span class="material-icons">keyboard_arrow_right</span>
-        <span class="instTxt">turn right</span><br>
+        <p class="instTxt">
+            <span class="material-icons">keyboard_arrow_right</span>
+            turn right
+        </p>
 
-        <span class="material-icons">keyboard_arrow_down</span>
-        <span class="instTxt">open bag</span><br>
+        <p class="instTxt">
+            <span class="material-icons">keyboard_arrow_down</span>
+            open bag
+        </p>
 
 
         <h2>with bag open:</h2>
-        <span class="material-icons">keyboard_arrow_up</span>
-        <span class="instTxt">select / deselect item</span><br>
+        <p class="instTxt">
+            <span class="material-icons">keyboard_arrow_up</span>
+            select / deselect item
+        </p>
 
-        <span class="material-icons">keyboard_arrow_left</span>
-        <span class="instTxt">previous item</span><br>
+        <p class="instTxt">
+            <span class="material-icons">keyboard_arrow_left</span>
+            previous item
+        </p>
 
-        <span class="material-icons">keyboard_arrow_right</span>
-        <span class="instTxt">next item</span><br>
+        <p class="instTxt">
+            <span class="material-icons">keyboard_arrow_right</span>
+            next item
+        </p>
 
-        <span class="material-icons">keyboard_arrow_down</span>
-        <span class="instTxt">close bag</span><br> 
+        <p class="instTxt">
+            <span class="material-icons">keyboard_arrow_down</span>
+            close bag
+        </p>
+
         <a href="index.html">
-            <span class="menuLink">Main Menu</span>
+            <p class="menuLink">Main Menu</p>
         </a>
     </div>
-
-
-    <!-- scripts -->
-        <script src="/script.js"></script>
+<!-- scripts -->
+    <script src="/script.js"></script>
 </body>
 </html>
